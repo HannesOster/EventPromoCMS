@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "M1/rs//L5Qs1+mW7i4r8cMTsjVP+4DlqEo+oAC1N/L6QU6vOlD+C7o/ACx3iBRsNVoaZAk89/CV3nqeSyAdvkw==",
+  "dgSpecHash": "8dc3k5yAyCSibDvAXk0oNDzBK9gjso2lK9y+bCON7GDvS0b5MnZLDb9Tgm4SGw+DH9WLslV9x0UeIBIRnsoOIg==",
   "success": true,
   "projectFilePath": "C:\\Users\\j.osterkamp\\exercises\\PizzaStore\\PizzaStore.csproj",
   "expectedPackageFiles": [
@@ -26,6 +26,7 @@
     "C:\\Users\\j.osterkamp\\.nuget\\packages\\microsoft.extensions.options\\6.0.0\\microsoft.extensions.options.6.0.0.nupkg.sha512",
     "C:\\Users\\j.osterkamp\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
     "C:\\Users\\j.osterkamp\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\j.osterkamp\\.nuget\\packages\\microsoft.typescript.msbuild\\5.3.3\\microsoft.typescript.msbuild.5.3.3.nupkg.sha512",
     "C:\\Users\\j.osterkamp\\.nuget\\packages\\sqlitepclraw.bundle_e_sqlite3\\2.0.6\\sqlitepclraw.bundle_e_sqlite3.2.0.6.nupkg.sha512",
     "C:\\Users\\j.osterkamp\\.nuget\\packages\\sqlitepclraw.core\\2.0.6\\sqlitepclraw.core.2.0.6.nupkg.sha512",
     "C:\\Users\\j.osterkamp\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3\\2.0.6\\sqlitepclraw.lib.e_sqlite3.2.0.6.nupkg.sha512",

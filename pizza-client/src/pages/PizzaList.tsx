@@ -3,7 +3,7 @@ import { TextField, Button, Box, List, ListItem, ListItemText, ListItemSecondary
 import { Delete, Edit } from '@mui/icons-material';
 
 interface Pizza {
-    id: string ;
+    id: number ;
     name: string;
     description: string;
 }
@@ -12,21 +12,21 @@ interface PizzaListProps {
     name: string;
     data: Pizza[];
     error?: Error | null;
-    onCreate: (item: Pizza) => void;
-    onUpdate: (updatedItem: Pizza) => void;
+    onCreate: (item: Pizza ) => void;
+    onUpdate: (updatedItem: Pizza ) => void;
     onDelete: (id: number) => void;
 }
 
 function PizzaList({ name, data, onCreate, onUpdate, onDelete, error }: PizzaListProps) {
-    const [formData, setFormData] = useState<Pizza>({ id: '', name: '', description: '' });
-    const [editingId, setEditingId] = useState<string | null>(null);
+    const [formData, setFormData] = useState<Partial<Pizza>>({});
+    const [editingId, setEditingId] = useState<number | null>(null);
 
     useEffect(() => {
         if (editingId === null) {
-            setFormData({ id: '', name: '', description: '' });
+            setFormData({});
         } else {
             const currentItem = data.find(item => item.id === editingId);
-            setFormData(currentItem || { id: '', name: '', description: '' });
+            setFormData(currentItem || {});
         }
     }, [editingId, data]);
 
@@ -42,21 +42,21 @@ function PizzaList({ name, data, onCreate, onUpdate, onDelete, error }: PizzaLis
         event.preventDefault();
 
         if (editingId !== null) {
-            onUpdate(formData);
+            onUpdate(formData as Pizza);
         } else {
-            onCreate(formData);
+            onCreate(formData as Pizza);
         }
 
-        setFormData({ id: '', name: '', description: '' });
+        setFormData({ });
         setEditingId(null);
     };
 
-    const handleEdit = (id: string) => {
+    const handleEdit = (id: number) => {
         setEditingId(id);
     };
 
     const handleCancel = () => {
-        setFormData({ id: '', name: '', description: '' });
+        setFormData({});
         setEditingId(null);
     };
 
