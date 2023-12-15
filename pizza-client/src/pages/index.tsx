@@ -1,4 +1,4 @@
-import Pizza from "@/pages/Pizza"
+import Product from "@/pages/Product"
 
 
 export default function Home() {
@@ -7,7 +7,7 @@ export default function Home() {
 
   return (
     <>
-          <Pizza />
+          <Product />
     </>
   )
 }

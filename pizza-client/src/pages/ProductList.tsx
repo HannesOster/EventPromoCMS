@@ -1,24 +1,18 @@
 ﻿import React, { useState, useEffect, ChangeEvent, FormEvent } from 'react';
 import { TextField, Button, Box, List, ListItem, ListItemText, ListItemSecondaryAction, IconButton } from '@mui/material';
 import { Delete, Edit } from '@mui/icons-material';
+import type { Product } from '@/pages/Product'
 
-interface Pizza {
-    id: number ;
-    name: string;
-    description: string;
-}
-
-interface PizzaListProps {
-    name: string;
-    data: Pizza[];
+interface ProductListProps {
+    data: Product[];
     error?: Error | null;
-    onCreate: (item: Pizza ) => void;
-    onUpdate: (updatedItem: Pizza ) => void;
+    onCreate: (item: Product ) => void;
+    onUpdate: (updatedItem: Product ) => void;
     onDelete: (id: number) => void;
 }
 
-function PizzaList({ name, data, onCreate, onUpdate, onDelete, error }: PizzaListProps) {
-    const [formData, setFormData] = useState<Partial<Pizza>>({});
+function PizzaList({  data, onCreate, onUpdate, onDelete, error }: ProductListProps) {
+    const [formData, setFormData] = useState<Partial<Product>>({});
     const [editingId, setEditingId] = useState<number | null>(null);
 
     useEffect(() => {
@@ -42,9 +36,9 @@ function PizzaList({ name, data, onCreate, onUpdate, onDelete, error }: PizzaLis
         event.preventDefault();
 
         if (editingId !== null) {
-            onUpdate(formData as Pizza);
+            onUpdate(formData as Product);
         } else {
-            onCreate(formData as Pizza);
+            onCreate(formData as Product);
         }
 
         setFormData({ });
@@ -66,10 +60,10 @@ function PizzaList({ name, data, onCreate, onUpdate, onDelete, error }: PizzaLis
 
     return (
         <Box className="Box" sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <h2>{name}</h2>
+            <h2>Product insertion</h2>
             <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: 8 }}>
                 <TextField label="Name" name="name" value={formData.name} onChange={handleFormChange} />
-                <TextField label="Description" name="description" value={formData.description} onChange={handleFormChange} />
+                <TextField label="Price" name="price" value={formData.price} onChange={handleFormChange} />
                 <Button sx={{ mr: 1 }} variant="contained" type="submit">{editingId === null ? 'Create' : 'Update'}</Button>
                 {editingId !== null && <Button variant="contained" color="secondary" onClick={handleCancel}>Cancel</Button>}
             </form>
@@ -85,7 +79,7 @@ function PizzaList({ name, data, onCreate, onUpdate, onDelete, error }: PizzaLis
                             </IconButton>
                         </>
                     }>
-                        <ListItemText primary={item.name} secondary={item.description} />
+                        <ListItemText primary={item.name} secondary={item.price} />
                     </ListItem>
                 ))}
             </List>

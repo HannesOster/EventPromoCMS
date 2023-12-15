@@ -2,14 +2,14 @@
 
 #nullable disable
 
-namespace PizzaStore.Migrations
+namespace ProductStore.Migrations
 {
     public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Pizzas",
+                name: "products",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
@@ -26,7 +26,7 @@ namespace PizzaStore.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Pizzas");
+                name: "products");
         }
     }
 }

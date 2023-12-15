@@ -2,21 +2,21 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using PizzaStore.Models;
+using ProductStore.Models;
 
 #nullable disable
 
-namespace PizzaStore.Migrations
+namespace ProductStore.Migrations
 {
-    [DbContext(typeof(PizzaDb))]
-    partial class PizzaDbModelSnapshot : ModelSnapshot
+    [DbContext(typeof(ProductDb))]
+    partial class ProductDbModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.0");
 
-            modelBuilder.Entity("PizzaStore.Models.Pizza", b =>
+            modelBuilder.Entity("ProductStore.Models.Product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -30,7 +30,7 @@ namespace PizzaStore.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Pizzas");
+                    b.ToTable("products");
                 });
 #pragma warning restore 612, 618
         }

@@ -7,8 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="pizza-client\src\pages\Pizza.tsx" />
-    <None Remove="pizza-client\src\pages\PizzaList.tsx" />
+    <None Remove="Product-client\src\pages\Product.tsx" />
+    <None Remove="Product-client\src\pages\PizzaList.tsx" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,8 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <TypeScriptCompile Include="pizza-client\src\pages\PizzaList.tsx" />
-    <TypeScriptCompile Include="pizza-client\src\pages\Pizza.tsx" />
+    <TypeScriptCompile Include="Product-client\src\pages\PizzaList.tsx" />
   </ItemGroup>
 
 </Project>

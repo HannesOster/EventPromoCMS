@@ -1,15 +1,15 @@
 using Microsoft.EntityFrameworkCore;
-using PizzaStore.Data;
+using ProductStore.Data;
 using Microsoft.OpenApi.Models;
-using PizzaStore.Models;
+using ProductStore.Models;
 
 var builder = WebApplication.CreateBuilder(args);
-var connectionString = builder.Configuration.GetConnectionString("pizzas") ?? "Data Source=Pizzas.db";
-builder.Services.AddDbContext<PizzaStore.Data.PizzaDb>(options => options.UseSqlite(connectionString));
+var connectionString = builder.Configuration.GetConnectionString("products") ?? "Data Source=products.db";
+builder.Services.AddDbContext<ProductStore.Data.ProductDb>(options => options.UseSqlite(connectionString));
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Pizzas API", Description = "Pizza pizza", Version = "v1" });
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "products API", Description = "Product product", Version = "v1" });
 });
 // 1) define a unique string
 string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
@@ -28,38 +28,38 @@ var app = builder.Build();
 app.UseSwagger();
 app.UseSwaggerUI(c =>
 {
-    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Pizzas API V1");
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "products API V1");
 });
 // 3) use the capability
 app.UseCors(MyAllowSpecificOrigins);
 
-app.MapGet("/pizzas", async (PizzaStore.Data.PizzaDb db) => await db.Pizzas.ToListAsync());
+app.MapGet("/products", async (ProductStore.Data.ProductDb db) => await db.Products.ToListAsync());
 
-app.MapPost("/pizzas", async (PizzaStore.Data.PizzaDb db, Pizza pizza) =>
+app.MapPost("/products", async (ProductStore.Data.ProductDb db, Product Product) =>
 {
-    await db.Pizzas.AddAsync(pizza);
+    await db.Products.AddAsync(Product);
     await db.SaveChangesAsync();
-    return Results.Created($"/pizzas/{pizza.Id}", pizza);
+    return Results.Created($"/products/{Product.Id}", Product);
 });
 
-app.MapPut("/pizzas/{id}", async (PizzaStore.Data.PizzaDb db, Pizza updatePizza, int id) =>
+app.MapPut("/products/{id}", async (ProductStore.Data.ProductDb db, Product updateProduct, int id) =>
 {
-    var pizzaItem = await db.Pizzas.FindAsync(id);
-    if (pizzaItem is null) return Results.NotFound();
-    pizzaItem.Name = updatePizza.Name;
-    pizzaItem.Description = updatePizza.Description;
+    var productProduct = await db.Products.FindAsync(id);
+    if (productProduct is null) return Results.NotFound();
+    productProduct.Name = updateProduct.Name;
+    productProduct.Price = updateProduct.Price;
     await db.SaveChangesAsync();
     return Results.NoContent();
 });
 
-app.MapDelete("/pizzas/{id}", async (PizzaStore.Data.PizzaDb db, int id) =>
+app.MapDelete("/products/{id}", async (ProductStore.Data.ProductDb db, int id) =>
 {
-    var todo = await db.Pizzas.FindAsync(id);
+    var todo = await db.Products.FindAsync(id);
     if (todo is null)
     {
         return Results.NotFound();
     }
-    db.Pizzas.Remove(todo);
+    db.Products.Remove(todo);
     await db.SaveChangesAsync();
     return Results.Ok();
 });

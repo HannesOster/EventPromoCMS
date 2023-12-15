@@ -2,13 +2,9 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup />
   <ItemGroup>
-    <TypeScriptCompile Update="pizza-client\src\pages\PizzaList.tsx">
+    <TypeScriptCompile Update="pizza-client\src\pages\ProductList.tsx">
       <SubType>Code</SubType>
     </TypeScriptCompile>
   </ItemGroup>
-  <ItemGroup>
-    <TypeScriptCompile Update="pizza-client\src\pages\Pizza.tsx">
-      <SubType>Code</SubType>
-    </TypeScriptCompile>
-  </ItemGroup>
+  <ItemGroup />
 </Project>

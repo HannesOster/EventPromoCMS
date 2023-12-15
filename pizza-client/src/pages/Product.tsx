@@ -1,46 +1,46 @@
 ﻿import { useState, useEffect } from 'react';
-import PizzaList from '@/pages/PizzaList';
+import ProductList from '@/pages/ProductList';
+import Link from 'next/link';
 
-interface Pizza {
+export interface Product {
     id: number;
     name: string;
-    description: string;
+    price: number;
 }
 
 
-const API_URL: string = 'https://localhost:5000/pizzas';
+const API_URL: string = 'https://localhost:5000/products';
 const headers: HeadersInit = {
     'Content-Type': 'application/json',
 };
-const term = "Pizza";
-function Pizza() {
-    const [data, setData] = useState<Pizza[]>([]);
+function Product() {
+    const [data, setData] = useState<Product[]>([]);
     const [error, setError] = useState<Error | null>(null);
 
     useEffect(() => {
-        fetchPizzaData();
+        fetchProductData();
     }, []);
 
-    const fetchPizzaData = () => {
+    const fetchProductData = () => {
         fetch(API_URL)
             .then(response => response.json())
-            .then((data: Pizza[]) => setData(data))
+            .then((data: Product[]) => setData(data))
             .catch((error: Error) => setError(error));
     };
 
-    const handleCreate = (item: Pizza) => {
+    const handleCreate = (item: Product) => {
         console.log(`add item: ${JSON.stringify(item)}`);
         fetch(API_URL, {
             method: 'POST',
             headers,
-            body: JSON.stringify({ name: item.name, description: item.description }),
+            body: JSON.stringify({ name: item.name, description: item.price }),
         })
             .then(response => response.json())
-            .then((returnedItem: Pizza) => setData([...data, returnedItem]))
+            .then((returnedItem: Product) => setData([...data, returnedItem]))
             .catch((error: Error) => setError(error));
     };
 
-    const handleUpdate = (updatedItem: Pizza) => {
+    const handleUpdate = (updatedItem: Product) => {
         console.log(`update item: ${JSON.stringify(updatedItem)}`);
         fetch(`${API_URL}/${updatedItem.id}`, {
             method: 'PUT',
@@ -62,16 +62,16 @@ function Pizza() {
 
     return (
         <div>
-            <PizzaList
-                name={term}
+            <ProductList
                 data={data}
                 error={error}
                 onCreate={handleCreate}
                 onUpdate={handleUpdate}
                 onDelete={handleDelete}
             />
+            <Link href='/PrdouctList'>Add Customers</Link>
         </div>
     );
 }
 
-export default Pizza;
+export default Product;
