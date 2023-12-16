@@ -15,7 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="Product-client\src\pages\Product.tsx" />
     <None Remove="Product-client\src\pages\ProductList.tsx" />
   </ItemGroup>
 
@@ -31,10 +30,6 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.4" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <TypeScriptCompile Include="Product-client\src\pages\ProductList.tsx" />
   </ItemGroup>
 
 </Project>

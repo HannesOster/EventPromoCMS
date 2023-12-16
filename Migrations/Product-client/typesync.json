@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "typeRoot": "./src/types"
+  },
+  "sources": [
+    {
+      "sourceFolder": "../",
+      "targetFolder": "./src/types/"
+    }
+  ]
+}

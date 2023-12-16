@@ -1,4 +1,4 @@
-import Product from "@/pages/Product"
+import Event from "@/pages/Event"
 
 
 export default function Home() {
@@ -7,7 +7,7 @@ export default function Home() {
 
   return (
     <>
-          <Product />
+          <Event />
     </>
   )
 }

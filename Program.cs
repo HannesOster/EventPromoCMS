@@ -1,66 +1,76 @@
 using Microsoft.EntityFrameworkCore;
-using ProductStore.Data;
 using Microsoft.OpenApi.Models;
-using ProductStore.Models;
+using EventCMS.Data;
+using EventCMS.Models;
 
 var builder = WebApplication.CreateBuilder(args);
-var connectionString = builder.Configuration.GetConnectionString("products") ?? "Data Source=products.db";
-builder.Services.AddDbContext<ProductDb>(options => options.UseSqlite(connectionString));
+var connectionString = builder.Configuration.GetConnectionString("events") ?? "Data Source=events.db";
+builder.Services.AddDbContext<EventDbContext>(options => options.UseSqlite(connectionString));
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "products API", Description = "Product product", Version = "v1" });
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "events API", Description = "Event API", Version = "v1" });
 });
-// 1) define a unique string
+
 string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(name: MyAllowSpecificOrigins,
       builder =>
       {
-        builder.WithOrigins("http://localhost:3000")
-       .AllowAnyHeader()
-       .AllowAnyMethod();
+          builder.WithOrigins("http://localhost:3000")
+                 .AllowAnyHeader()
+                 .AllowAnyMethod();
+          builder.WithOrigins("http://localhost:4000")
+                .AllowAnyHeader()
+                .WithMethods("GET");
       });
 });
 
 var app = builder.Build();
+
 app.UseSwagger();
 app.UseSwaggerUI(c =>
 {
-    c.SwaggerEndpoint("/swagger/v1/swagger.json", "products API V1");
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "events API V1");
 });
-// 3) use the capability
 app.UseCors(MyAllowSpecificOrigins);
 
-app.MapGet("/products", async (ProductDb db) => await db.Products.ToListAsync());
+app.MapGet("/events", async (EventDbContext db) => await db.Events.ToListAsync());
 
-app.MapPost("/products", async (ProductDb db, Product product) =>
+app.MapPost("/events", async (EventDbContext db, Event @event) =>
 {
-    await db.Products.AddAsync(product);
+    await db.Events.AddAsync(@event);
     await db.SaveChangesAsync();
-    return Results.Created($"/products/{product.Id}", product);
+    return Results.Created($"/events/{@event.Id}", @event);
 });
 
-app.MapPut("/products/{id}", async (ProductDb db, Product updateProduct, int id) =>
+app.MapPut("/events/{id}", async (EventDbContext db, Event updateEvent, int id) =>
 {
-    var productItem = await db.Products.FindAsync(id);
-    if (productItem is null) return Results.NotFound();
-    productItem.Name = updateProduct.Name;
-    productItem.Price = updateProduct.Price;
+    var eventItem = await db.Events.FindAsync(id);
+    if (eventItem is null) return Results.NotFound();
+
+    eventItem.Name = updateEvent.Name;
+    eventItem.Description = updateEvent.Description;
+    eventItem.SubDescription = updateEvent.SubDescription;
+    eventItem.Price = updateEvent.Price;
+    eventItem.ImageUrl = updateEvent.ImageUrl;
+
     await db.SaveChangesAsync();
     return Results.NoContent();
 });
 
-app.MapDelete("/products/{id}", async (ProductDb db, int id) =>
+
+app.MapDelete("/events/{id}", async (EventDbContext db, int id) =>
 {
-    var todo = await db.Products.FindAsync(id);
-    if (todo is null)
+    var eventItem = await db.Events.FindAsync(id);
+    if (eventItem is null)
     {
         return Results.NotFound();
     }
-    db.Products.Remove(todo);
+    db.Events.Remove(eventItem);
     await db.SaveChangesAsync();
     return Results.Ok();
 });
+
 app.Run();
