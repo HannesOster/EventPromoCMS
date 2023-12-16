@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "8dc3k5yAyCSibDvAXk0oNDzBK9gjso2lK9y+bCON7GDvS0b5MnZLDb9Tgm4SGw+DH9WLslV9x0UeIBIRnsoOIg==",
+  "dgSpecHash": "v914RHZDplCIgJ973S8fp95UiWuuedWSgm/5xcg0DHtNUms8Ks+VHN4W906bC7gDIBFje/NsVaDhSqhCm6XmMg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\j.osterkamp\\exercises\\PizzaStore\\PizzaStore.csproj",
+  "projectFilePath": "C:\\Users\\j.osterkamp\\exercises\\ProductStore\\ProductStore.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\j.osterkamp\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\j.osterkamp\\.nuget\\packages\\microsoft.data.sqlite.core\\6.0.0\\microsoft.data.sqlite.core.6.0.0.nupkg.sha512",

@@ -4,13 +4,14 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProductStore.Data;
+
 #nullable disable
 
 namespace ProductStore.Migrations
 {
     [DbContext(typeof(ProductDb))]
-    [Migration("20231214161451_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20231216115912_CreateProductTable")]
+    partial class CreateProductTable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,15 +24,24 @@ namespace ProductStore.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Description")
+                    b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Name")
+                    b.Property<decimal>("Price")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
-                    b.ToTable("products");
+                    b.ToTable("Products");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Football",
+                            Price = 50m
+                        });
                 });
 #pragma warning restore 612, 618
         }

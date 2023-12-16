@@ -1598,11 +1598,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\j.osterkamp\\exercises\\PizzaStore\\PizzaStore.csproj",
-      "projectName": "PizzaStore",
-      "projectPath": "C:\\Users\\j.osterkamp\\exercises\\PizzaStore\\PizzaStore.csproj",
+      "projectUniqueName": "C:\\Users\\j.osterkamp\\exercises\\ProductStore\\ProductStore.csproj",
+      "projectName": "ProductStore",
+      "projectPath": "C:\\Users\\j.osterkamp\\exercises\\ProductStore\\ProductStore.csproj",
       "packagesPath": "C:\\Users\\j.osterkamp\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\j.osterkamp\\exercises\\PizzaStore\\obj\\",
+      "outputPath": "C:\\Users\\j.osterkamp\\exercises\\ProductStore\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\j.osterkamp\\AppData\\Roaming\\NuGet\\NuGet.Config",

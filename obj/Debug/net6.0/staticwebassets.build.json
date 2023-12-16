@@ -1,8 +1,8 @@
 {
   "Version": 1,
-  "Hash": "DlUVWwDGHroYGjiGzi/5yJKtxnb4FJ/N1plt38jwKJg=",
-  "Source": "PizzaStore",
-  "BasePath": "_content/PizzaStore",
+  "Hash": "hNxh2cPtEQQLN1PUZyW8xgDPWjKE9kZ1tKqVMGUC3fc=",
+  "Source": "ProductStore",
+  "BasePath": "_content/ProductStore",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
