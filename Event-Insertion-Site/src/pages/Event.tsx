@@ -17,7 +17,7 @@ const headers: HeadersInit = {
 };
 
 function EventPage() {
-    const [data, setData] = useState<Event[]>([]);
+    const [eventData, setEventData] = useState<Event[]>([]); 
     const [error, setError] = useState<Error | null>(null);
 
     useEffect(() => {
@@ -27,7 +27,7 @@ function EventPage() {
     const fetchEventData = () => {
         fetch(API_URL)
             .then(response => response.json())
-            .then((data: Event[]) => setData(data))
+            .then((data: Event[]) => setEventData(data)) 
             .catch((error: Error) => setError(error));
     };
 
@@ -41,7 +41,7 @@ function EventPage() {
             body: JSON.stringify(newItemWithUid),
         })
             .then(response => response.json())
-            .then((returnedItem: Event) => setData([...data, returnedItem]))
+            .then((returnedItem: Event) => setEventData([...eventData, returnedItem])) 
             .catch((error: Error) => setError(error));
     };
 
@@ -52,21 +52,23 @@ function EventPage() {
             headers,
             body: JSON.stringify(updatedItem),
         })
-            .then(() => setData(data.map(item => item.id === updatedItem.id ? updatedItem : item)))
+            .then(() => setEventData(eventData.map(item => item.id === updatedItem.id ? updatedItem : item))) 
             .catch((error: Error) => setError(error));
     };
+
     const handleDelete = (id: string | undefined) => {
         if (id !== undefined) {
             fetch(`${API_URL}/${id}`, {
                 method: 'DELETE',
                 headers,
             })
-                .then(() => setData(data.filter(item => item.id !== id)))
+                .then(() => setEventData(eventData.filter(item => item.id !== id))) 
                 .catch((error: Error) => console.error('Error deleting item:', error));
         }
     };
+
     const handleReinsert = async (id: string | undefined) => {
-        const selectedItem = data.find(item => item.id === id);
+        const selectedItem = eventData.find(item => item.id === id); 
 
         await handleDelete(id);
 
@@ -81,8 +83,9 @@ function EventPage() {
                 });
 
                 if (response.ok) {
-                    const returnedItem = await response.json();
-                    setData(prevData => [...prevData, returnedItem]);
+                    setTimeout(async () => {
+                        await fetchEventData();
+                    }, 200);
                 } else {
                     throw new Error(`Failed to reinsert item. Server returned ${response.status}`);
                 }
@@ -92,11 +95,10 @@ function EventPage() {
         }
     };
 
-    console.log(data);
     return (
         <div>
             <EventList
-                data={data}
+                data={eventData} 
                 error={error}
                 onCreate={handleCreate}
                 onUpdate={handleUpdate}
