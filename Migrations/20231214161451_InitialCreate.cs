@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
-using EventCMS.Data;
 
 namespace EventCMS.Migrations
 {
@@ -11,8 +10,7 @@ namespace EventCMS.Migrations
                 name: "events",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                    Id = table.Column<string>(type: "TEXT", nullable: false),
                     Name = table.Column<string>(type: "TEXT", nullable: true),
                     Description = table.Column<string>(type: "TEXT", nullable: true),
                     SubDescription = table.Column<string>(type: "TEXT", nullable: true),
@@ -27,7 +25,7 @@ namespace EventCMS.Migrations
             migrationBuilder.InsertData(
                 table: "events",
                 columns: new[] { "Id", "Name", "Description", "SubDescription", "Price", "ImageUrl" },
-                values: new object[] { 1, "Sample Event", "This is a sample event.", "Sub Description", 50.0m, "https://example.com/sample-image.jpg" });
+                values: new object[] { "1", "Sample Event", "This is a sample event.", "Sub Description", 50.0m, "https://example.com/sample-image.jpg" });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

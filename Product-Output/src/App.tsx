@@ -12,7 +12,7 @@ import {
 interface EventData {
     name: string;
     description: string;
-    image: string;
+    imageUrl: string;
     subDescription: string;
     price: number;
 }
@@ -35,16 +35,17 @@ function App() {
         return <div>Loading...</div>;
     }
 
-    const { name, description, image, subDescription, price } = eventData[1];
+    const lastIndex = eventData.length - 1;
+    const { name, description, imageUrl, subDescription, price } = eventData[lastIndex];
 
     return (
         <ThemeProvider theme={theme}>
-            <Container>
-                <Card style={{ marginTop: '16px' }}>
+            <Container style={{ marginTop: '16px', width: '100%' }}>
+                <Card style={{ marginTop: '16px', width: '100%' }}>
                     <CardContent>
                         <Typography variant="h4">{name}</Typography>
                         <Typography variant="body1">{description}</Typography>
-                        <CardMedia component="img" src={image} alt="Event Image" style={{ width: '100%', marginBottom: '16px' }} />
+                        <CardMedia component="img" src={imageUrl} alt="Event Image" style={{ width: '100%', marginBottom: '16px' }} />
                         <Typography variant="body1">{subDescription}</Typography>
                         <Typography variant="h6">{`Price: $${price}`}</Typography>
                     </CardContent>

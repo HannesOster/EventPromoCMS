@@ -45,7 +45,7 @@ app.MapPost("/events", async (EventDbContext db, Event @event) =>
     return Results.Created($"/events/{@event.Id}", @event);
 });
 
-app.MapPut("/events/{id}", async (EventDbContext db, Event updateEvent, int id) =>
+app.MapPut("/events/{id}", async (EventDbContext db, Event updateEvent, string id) =>
 {
     var eventItem = await db.Events.FindAsync(id);
     if (eventItem is null) return Results.NotFound();
@@ -61,7 +61,7 @@ app.MapPut("/events/{id}", async (EventDbContext db, Event updateEvent, int id) 
 });
 
 
-app.MapDelete("/events/{id}", async (EventDbContext db, int id) =>
+app.MapDelete("/events/{id}", async (EventDbContext db, string id) =>
 {
     var eventItem = await db.Events.FindAsync(id);
     if (eventItem is null)

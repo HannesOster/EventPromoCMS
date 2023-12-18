@@ -14,7 +14,7 @@ namespace EventCMS.Data
             modelBuilder.Entity<Event>().HasData(
                 new Event
                 {
-                    Id = 1,
+                    Id = "1",
                     Name = "Sample Event",
                     Description = "This is a sample event.",
                     SubDescription = "You can put whatever information here.",

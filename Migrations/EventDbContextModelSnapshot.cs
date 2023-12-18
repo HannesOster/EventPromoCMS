@@ -18,9 +18,8 @@ namespace ProductStore.Migrations
 
             modelBuilder.Entity("EventCMS.Models.Event", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("Id")
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -48,7 +47,7 @@ namespace ProductStore.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 1,
+                            Id = "1",
                             Description = "This is a sample event.",
                             ImageUrl = "https://example.com/sample-image.jpg",
                             Name = "Sample Event",
