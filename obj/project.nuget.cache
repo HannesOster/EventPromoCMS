@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "v914RHZDplCIgJ973S8fp95UiWuuedWSgm/5xcg0DHtNUms8Ks+VHN4W906bC7gDIBFje/NsVaDhSqhCm6XmMg==",
+  "dgSpecHash": "wwzjDp8u0p7Hi+8l4SAufgJNAQ9Z3dt4VNYul6e6vEkAGJD6bTRNF+WhZA8QZiXOxE5GNLbeTNXs3rpqdO93yA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\j.osterkamp\\exercises\\ProductStore\\ProductStore.csproj",
+  "projectFilePath": "C:\\Users\\j.osterkamp\\exercises\\EventCMS\\EventCMS.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\j.osterkamp\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\j.osterkamp\\.nuget\\packages\\microsoft.data.sqlite.core\\6.0.0\\microsoft.data.sqlite.core.6.0.0.nupkg.sha512",

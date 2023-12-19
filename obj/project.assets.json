@@ -1598,11 +1598,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\j.osterkamp\\exercises\\ProductStore\\ProductStore.csproj",
-      "projectName": "ProductStore",
-      "projectPath": "C:\\Users\\j.osterkamp\\exercises\\ProductStore\\ProductStore.csproj",
+      "projectUniqueName": "C:\\Users\\j.osterkamp\\exercises\\EventCMS\\EventCMS.csproj",
+      "projectName": "EventCMS",
+      "projectPath": "C:\\Users\\j.osterkamp\\exercises\\EventCMS\\EventCMS.csproj",
       "packagesPath": "C:\\Users\\j.osterkamp\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\j.osterkamp\\exercises\\ProductStore\\obj\\",
+      "outputPath": "C:\\Users\\j.osterkamp\\exercises\\EventCMS\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\j.osterkamp\\AppData\\Roaming\\NuGet\\NuGet.Config",
